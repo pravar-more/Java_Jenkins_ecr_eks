@@ -49,6 +49,10 @@ i. JenkinsMachine_ecr-eks ==>
           sudo ufw enable
 
         On webBrowser::   http://<ec2_ip_address>:8080
+ii. eksctl                                                                                          # either can create another instance or on jenkins machine
+    userData::
+      AWSCLI
+          
       
 
 
