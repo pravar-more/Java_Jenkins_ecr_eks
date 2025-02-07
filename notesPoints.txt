@@ -23,6 +23,7 @@ iii. AWS CLI
 EC2 Machine Configuration::
 i. JenkinsMachine_ecr-eks ==>
         t2.medium
+        ami: ami-0884d2865dbe9de4b
         zone: us-east-2b
         ubuntu 22.04
         8Gib gp2
