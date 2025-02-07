@@ -1,0 +1,18 @@
+  3 ways to create cluster using aws eks -->
+i. installing eksctl and using the 
+
+
+>>    eksctl create cluster \
+      --name clustername \
+      --version 1.2 \
+
+
+ii.  using aws management console --> from the web ui
+
+iii. AWS CLI
+
+>>    aws eks create cluster \
+      --region region-code
+      --name cluster_name
+      --kubernetes-version 1.21 \ 
+      --role-arn arn:aws::
