@@ -16,3 +16,48 @@ iii. AWS CLI
       --name cluster_name
       --kubernetes-version 1.21 \ 
       --role-arn arn:aws::
+==========================================================================================================================================
+
+EC2 Machine Configuration::
+i. JenkinsMachine_ecr-eks ==>
+        t2.medium
+        zone: us-east-2b
+        ubuntu 22.04
+        8Gib gp2
+        SG: ecr-eksSG
+          port: 22, 80, 8080
+        --------
+    userData::
+          sudo hostname jenkins
+          sudo apt update
+          sudo apt install default-jdk   OR    sudo apt install openjdk-17-jdk
+          java -version
+          sudo apt install maven -y
+          mvn --version
+        Jenkins setup
+          curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key | sudo tee \        #importing gpg key
+                /usr/share/keyrings/jenkins-keyring.asc > /dev/null
+          echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \                          #Add the Jenkins software repository to source list and provide the authentication key
+               https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
+               /etc/apt/sources.list.d/jenkins.list > /dev/null
+          sudo apt install jenkins -y                                                              # install jenkins
+          sudo systemctl status jenkins
+          sudo systemctl start jenkins    OR service jenkins start
+          sudo systemctl enable jenkins
+          sudo ufw allow 8080                                                                       # modify firewall -Allow Jenkins to communicate by setting up the default UFW firewall.
+          sudo ufw status
+          sudo ufw enable
+
+        On webBrowser::   http://<ec2_ip_address>:8080
+      
+
+
+
+
+==========================================================================================================================================
+
+
+==========================================================================================================================================
+
+
+==========================================================================================================================================
