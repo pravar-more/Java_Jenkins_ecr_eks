@@ -52,6 +52,8 @@ i. JenkinsMachine_ecr-eks ==>
           sudo ufw enable
 
         On webBrowser::   http://<ec2_ip_address>:8080
+
+
 ii. eksctl                                                                                          # either can create another instance or on jenkins machine
     userData::
       AWSCLI
@@ -69,7 +71,24 @@ ii. eksctl                                                                      
             rm eksctl_${PLATFORM}_${ARCH}.tar.gz
 
             eksctl version
+      Installing KubeCTL
+            curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+            sudo apt-get update
+            sudo apt-get install -y apt-transport-https ca-certificates curl gnupg
+            curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+            sudo sh -c 'echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" > /etc/apt/sources.list.d/kubernetes.list'
+            sudo apt-get install -y kubectl
+            kubectl version --client
 
+
+      
+      VARIKABLES:
+            AWS_ACCESS_KEY = ""
+            AWS_SECRET_KEY = ""
+            REGION = "us-east-1"
+            KEY_NAME = ""
+            JENKINS_MACHINE_IP = ""
+            
       AWS Configure
                   AWS_ACCESS_KEY_ID = $AWS_ACCESS_KEY
                   AWS_SECRET_ACCESS_KEY = $AWS_SECRET_KEY
@@ -84,6 +103,7 @@ ii. eksctl                                                                      
                   aws configure list
       SSH-keygen
             ssh-keygen -t rsa -b 4096 -f ~/.ssh/id_rsa -N ""
+
             
 
 
