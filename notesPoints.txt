@@ -103,6 +103,19 @@ ii. eksctl                                                                      
                   aws configure list
       SSH-keygen
             ssh-keygen -t rsa -b 4096 -f ~/.ssh/id_rsa -N ""
+       --------
+      CREATE eksctl cluster 
+            eksctl create cluster --name eksClusterName --region us-east-2 --nodegroup-name NodeGroup --node-type t3.small --manged --nodes 2
+            eksctl get cluster --name eksClusterName --region us-east-2
+
+
+iii. ECR on AWS Web UI
+         Installing Docker --> either be done on separate machine or on jenkins machine 
+            sudo apt install gnupg2 pass -y
+            sudo apt install docker.io -y 
+            systemctl start docker
+            systemctl enable docker
+            systemctl status docker
 
             
 
