@@ -117,8 +117,18 @@ iii. ECR on AWS Web UI
             systemctl enable docker
             systemctl status docker
 
-            
+###If installing on same machine for all can do it by creating different users and their respective user groups
+      sudo useradd docker
+      sudo usermod -aG docker $USER
+      newgrp docker
+      sudo usermod -a -G docker jenkins                  # adding jenkins user to docker group as well 
+      systemctl daemon-reload
 
+
+PLUGINS in JENKINS
+      docker
+      docker-pipeline
+      kubernetes cli
 
 
 
