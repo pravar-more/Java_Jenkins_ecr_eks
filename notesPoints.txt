@@ -1,4 +1,4 @@
-Following this link :: https://www.coachdevops.com/2022/01/deploy-springboot-microservices-app_11.html
+      Following this link :: https://www.coachdevops.com/2022/01/deploy-springboot-microservices-app_11.html
 
 3 ways to create cluster using aws eks -->
 i. installing eksctl and using the 
@@ -55,8 +55,37 @@ i. JenkinsMachine_ecr-eks ==>
 ii. eksctl                                                                                          # either can create another instance or on jenkins machine
     userData::
       AWSCLI
-          
-      
+          curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+          sudo apt install unzip
+          sudo unzip awscliv2.zip  
+          sudo ./aws/install
+          aws --version
+      EKSCTL
+            ARCH=$(uname -m)
+            PLATFORM=$(uname -s)
+            curl -sLO "https://github.com/eksctl-io/eksctl/releases/latest/download/eksctl_${PLATFORM}_${ARCH}.tar.gz"
+            tar -xzf eksctl_${PLATFORM}_${ARCH}.tar.gz -C /tmp
+            sudo mv /tmp/eksctl /usr/local/bin
+            rm eksctl_${PLATFORM}_${ARCH}.tar.gz
+
+            eksctl version
+
+      AWS Configure
+                  AWS_ACCESS_KEY_ID = $AWS_ACCESS_KEY
+                  AWS_SECRET_ACCESS_KEY = $AWS_SECRET_KEY
+                  AWS_DEFAULT_REGION = $REGION
+                  
+                  # Configure AWS CLI
+                  aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
+                  aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
+                  aws configure set default.region $AWS_DEFAULT_REGION
+                  
+                  # Verify configuration
+                  aws configure list
+      SSH-keygen
+            ssh-keygen -t rsa -b 4096 -f ~/.ssh/id_rsa -N ""
+            
+
 
 
 
